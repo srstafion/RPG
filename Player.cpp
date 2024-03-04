@@ -6,13 +6,12 @@ Player::Player(sf::Vector2f startPosition)
 	player.setTexture(&texture);
 	player.setSize(sf::Vector2f(32, 32));
 	player.setPosition(startPosition);
-
 }
 
 void Player::draw(sf::RenderWindow& window)
 {
 	window.draw(player);
-
+	stats.showStats(window);
 }
 
 void Player::move(int direction)
@@ -38,4 +37,19 @@ void Player::move(int direction)
 sf::Vector2f Player::getPosition()
 {
 	return player.getPosition();
+}
+
+void Player::addHp(int hp)
+{
+	stats.setHealth(stats.getHealth() + hp);
+}
+
+void Player::removeHp(int hp)
+{
+	stats.setHealth(stats.getHealth() - hp);
+}
+
+int Player::getHp()
+{
+	return stats.getHealth();
 }

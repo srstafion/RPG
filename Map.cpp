@@ -10,9 +10,16 @@ Map::Map(int width, int height)
 	backgroundTile.setTexture(texture);
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 30; j++) {
-			maskTiles[i][j].setSize(sf::Vector2f(32, 32));
-			maskTiles[i][j].setFillColor((mask[i][j] == 1) ? sf::Color(0, 255, 0, 0) : sf::Color(0, 0, 255, 0));
-			maskTiles[i][j].setPosition(sf::Vector2f(j * 32, i * 32));
+			if(mask[i][j]==4) {
+				maskTiles[i][j].setSize(sf::Vector2f(32, 32));
+				maskTiles[i][j].setFillColor(sf::Color(100, 100, 75));
+				maskTiles[i][j].setPosition(sf::Vector2f(j * 32, i * 32));
+			}
+			else {
+				maskTiles[i][j].setSize(sf::Vector2f(32, 32));
+				maskTiles[i][j].setFillColor((mask[i][j] == 1) ? sf::Color(0, 255, 0, 0) : sf::Color(0, 0, 255, 0));
+				maskTiles[i][j].setPosition(sf::Vector2f(j * 32, i * 32));
+			}
 		}
 	}
 
@@ -51,7 +58,9 @@ vector<vector<int>> Map::getArrayCoordinatesByNum(int num)
 	return coordinates;
 }
 
-void Map::changeTile(int x, int y, int value)
+void Map::changeMask(int x, int y, int value)
 {
+	cout << mask[y][x] << endl;
 	mask[y][x] = value;
+	cout << mask[y][x] << endl;
 }

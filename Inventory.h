@@ -19,4 +19,9 @@ public:
 	void draw(sf::RenderWindow&);
 	void changeVisible();
 	void addItem(Item item);
+	void removeItem(int index);
+	int getCountItems();
+	int getSlotCount();
+	vector <Item> getItems();
+
 };
